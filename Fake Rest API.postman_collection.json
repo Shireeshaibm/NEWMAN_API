@@ -1,0 +1,225 @@
+{
+	"info": {
+		"_postman_id": "9cf99499-b0f5-4270-90e0-cbd26f026f87",
+		"name": "Fake Rest API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32761241"
+	},
+	"item": [
+		{
+			"name": "GET FOLDER",
+			"item": [
+				{
+					"name": "New Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"status code is 200 OK\",function() {\r",
+									"\r",
+									"    pm.response.to.have.status(200)\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}{{GetEndpoint}}",
+							"host": [
+								"{{BaseUrl}}{{GetEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "POST FOLDER",
+			"item": [
+				{
+					"name": "New Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"status code is 200 OK\",function() {\r",
+									"\r",
+									"    pm.response.to.have.status(200)\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"response body should contain user with ID 234\",function() {\r",
+									" \r",
+									"   var jsondata=pm.response.json();\r",
+									"    pm.expect(jsondata).to.have.property('id').to.eql(234);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content-Type header is present and has value 'application/json'\", \r",
+									"    function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"{{id}}\",\r\n  \"title\": \"{{title}}\",\r\n  \"dueDate\": \"{{dueDate}}\",\r\n  \"completed\": {{completed}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}{{GetEndpoint}}?id=id&title=tile&dueDate=dueDate&completed=completed",
+							"host": [
+								"{{BaseUrl}}{{GetEndpoint}}"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "id"
+								},
+								{
+									"key": "title",
+									"value": "tile"
+								},
+								{
+									"key": "dueDate",
+									"value": "dueDate"
+								},
+								{
+									"key": "completed",
+									"value": "completed"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PUT Folder",
+			"item": [
+				{
+					"name": "New Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"status code is 200 OK\",function() {\r",
+									"\r",
+									"    pm.response.to.have.status(200)\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"response body should contain user with ID 234\",function() {\r",
+									" \r",
+									"   var jsondata=pm.response.json();\r",
+									"    pm.expect(jsondata).to.have.property('id').to.eql(234);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 234,\r\n  \"title\": \"jacob\",\r\n  \"dueDate\": \"2024-02-07T07:10:24.068Z\",\r\n  \"completed\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}{{GetEndpoint}}/234",
+							"host": [
+								"{{BaseUrl}}{{GetEndpoint}}"
+							],
+							"path": [
+								"234"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete Folder",
+			"item": [
+				{
+					"name": "New Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"status code is 200 OK\",function() {\r",
+									"\r",
+									"    pm.response.to.have.status(200)\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}{{GetEndpoint}}/234",
+							"host": [
+								"{{BaseUrl}}{{GetEndpoint}}"
+							],
+							"path": [
+								"234"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
